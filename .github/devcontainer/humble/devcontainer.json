@@ -1,0 +1,30 @@
+{
+  "name": "azure-kinect-humble-build",
+
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "args":
+    {
+      "ROS_DISTRO": "humble"
+    }
+  },
+
+  "containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}"
+  },
+
+  "mounts": [
+    "type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix,consistency=cached"
+  ],
+
+  "runArgs": [
+    "--network=host",
+    "--cap-add=sys_nice", // Grants the container the CAP_SYS_NICE capability, which allows the container to raise process nice values, set real-time scheduling policies, set CPU affinity, and other operations.
+    "--security-opt", // allow core dumps
+    "seccomp=unconfined", // allow core dumps
+    // Uncomment for containers requiring use of nvidia GPUs
+    // You will need to install NVIDIA Container Toolkit first
+    // "--runtime=nvidia",
+    // "--gpus=all",
+  ]
+}
