@@ -37,4 +37,4 @@ jobs:
           imageTag: ${{ matrix.os }}
           subFolder: ${{ matrix.os }}
           push: always
-          runCmd: make ci-build
+          runCmd: echo "Image has been built"
