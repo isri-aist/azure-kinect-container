@@ -35,6 +35,6 @@ jobs:
         with:
           imageName: ghcr.io/isri-aist/azure-kinect-container
           imageTag: ${{ matrix.os }}
-          configFile: ./../devcontainer/${{ matrix.os }}/devcontainer.json
+          subFolder: ${{ matrix.os }}
           push: always
           runCmd: make ci-build

@@ -1,11 +1,11 @@
 {
-  "name": "azure-kinect-humble-build",
+  "name": "azure-kinect-jazzy-build",
 
   "build": {
-    "dockerfile": "../Dockerfile",
+    "dockerfile": "../../Dockerfile",
     "args":
     {
-      "ROS_DISTRO": "humble"
+      "ROS_DISTRO": "jazzy"
     }
   },
 
@@ -19,7 +19,6 @@
 
   "runArgs": [
     "--network=host",
-    "--cap-add=sys_nice", // Grants the container the CAP_SYS_NICE capability, which allows the container to raise process nice values, set real-time scheduling policies, set CPU affinity, and other operations.
     "--security-opt", // allow core dumps
     "seccomp=unconfined", // allow core dumps
     // Uncomment for containers requiring use of nvidia GPUs

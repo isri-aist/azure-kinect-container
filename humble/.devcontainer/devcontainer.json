@@ -1,11 +1,11 @@
 {
-  "name": "azure-kinect-jazzy-build",
+  "name": "azure-kinect-humble-build",
 
   "build": {
-    "dockerfile": "../Dockerfile",
+    "dockerfile": "../../Dockerfile",
     "args":
     {
-      "ROS_DISTRO": "jazzy"
+      "ROS_DISTRO": "humble"
     }
   },
 
