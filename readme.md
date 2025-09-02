@@ -36,12 +36,11 @@ This command install Azure Kinect SDK and ROS2 driver.
 Once the container is built and your camera is plugged in, run the following command to launch the container:
 
 ```bash
-docker run -it -d --rm -e DISPLAY=$DISPLAY -e ROS_DOMAIN_ID=10 -v /tmp/.X11-unix:/tmp/.X11-unix --net=host --ipc=host --privileged ghcr.io/isri-aist/azure-kinect-container:humble
+docker run -it --rm -d -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --net=host --privileged --runtime=nvidia --gpus=all -e NVIDIA_DRIVER_CAPABILITIES=all ghcr.io/isri-aist/azure-kinect-container:humble
 
-export ROS_DOMAIN_ID=10
 rqt # can be used to visualize current image
 ```
 
 > ℹ️ --privileged is required to access USB devices. X11 display is passed to allow GUI applications like RViz to render (if used). 
 
-> 💻 If you want to use your host gpu, you will need to install NVIDIA Container Toolkit and add the following content to the run command : `--runtime=nvidia --gpus=all`
+> 💻 If you want to use your host gpu, you will need to install NVIDIA Container Toolkit and add the following content to the run command : `-e NVIDIA_DRIVER_CAPABILITIES=all --runtime=nvidia --gpus=all`

@@ -4,10 +4,11 @@ ARG IMAGE_SOURCE_REPO="isri-aist/azure-kinect-container"
 FROM osrf/ros:${ROS_DISTRO}-desktop
 ARG IMAGE_SOURCE_REPO
 
+ENV ROS_LOCALHOST_ONLY=1
+
 LABEL org.opencontainers.image.source="https://github.com/${IMAGE_SOURCE_REPO}"
 LABEL org.opencontainers.image.description="Development environment for $IMAGE_SOURCE_REPO (ros $ROS_DISTRO)"
 
-# Install dependencies
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     curl \
