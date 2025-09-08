@@ -4,8 +4,6 @@ ARG IMAGE_SOURCE_REPO="isri-aist/azure-kinect-container"
 FROM osrf/ros:${ROS_DISTRO}-desktop
 ARG IMAGE_SOURCE_REPO
 
-ENV ROS_LOCALHOST_ONLY=1
-
 LABEL org.opencontainers.image.source="https://github.com/${IMAGE_SOURCE_REPO}"
 LABEL org.opencontainers.image.description="Development environment for $IMAGE_SOURCE_REPO (ros $ROS_DISTRO)"
 
@@ -61,8 +59,6 @@ RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
 # Copy entrypoint script
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-
-# Set entrypoint to source environments before running anything
 ENTRYPOINT ["/entrypoint.sh"]
 
 # Run driver on docker run

@@ -1,0 +1,35 @@
+services:
+  azure-kinect:
+    image: ghcr.io/isri-aist/azure-kinect-container:humble
+    container_name: azure-kinect-container
+
+    environment:
+      DISPLAY: ${DISPLAY}
+      ROS_DOMAIN_ID: 10
+      # NVIDIA_DRIVER_CAPABILITIES: all 
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      # OPTIONAL: Mount a user dir from the host to /launch_dir inside the container
+      # Replace this path with the actual location of the your launch files directory
+      # - /{path_to_dir}:/launch_dir
+
+    network_mode: host
+    ipc: host
+    privileged: true
+    # runtime: nvidia 
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
+    shm_size: 3g 
+
+    stdin_open: true
+    tty: true
+
+    # OPTIONAL: specify which launch file to launch from launch_dir
+    # working_dir: "/launch_dir"
+    # command: ros2 launch ./driver.launch.py

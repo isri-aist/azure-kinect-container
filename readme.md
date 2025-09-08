@@ -36,7 +36,9 @@ This command install Azure Kinect SDK and ROS2 driver.
 Once the container is built and your camera is plugged in, run the following command to launch the container:
 
 ```bash
-docker run -it --rm -d -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --net=host --privileged --runtime=nvidia --gpus=all -e NVIDIA_DRIVER_CAPABILITIES=all ghcr.io/isri-aist/azure-kinect-container:humble
+docker run -it --rm  -e DISPLAY=$DISPLAY -e ROS_DOMAIN_ID=10 -v /tmp/.X11-unix:/tmp/.X11-unix --net=host --ipc=host --privileged --shm-size=2g ghcr.io/isri-aist/azure-kinect-container:humble
+#or (To be run in the current folder)
+docker compose up 
 
 rqt # can be used to visualize current image
 ```
@@ -44,3 +46,24 @@ rqt # can be used to visualize current image
 > ℹ️ --privileged is required to access USB devices. X11 display is passed to allow GUI applications like RViz to render (if used). 
 
 > 💻 If you want to use your host gpu, you will need to install NVIDIA Container Toolkit and add the following content to the run command : `-e NVIDIA_DRIVER_CAPABILITIES=all --runtime=nvidia --gpus=all`
+
+## Custom run 
+
+If you want to use your own launch file, you need to mount launch file's directory and specify which launch file should be ran. 
+
+Please check the following entries in `docker-compose.yml` :
+* volumes
+* working_dir
+* command
+
+You can then run the container by executing the following command in the current directory :
+
+```bash
+docker compose up 
+```
+
+## Advance 
+
+### Running in the background
+
+If you detach your docker run you can use `-d` option either for `docker run` or `docker compose` command. 

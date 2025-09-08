@@ -1,9 +1,13 @@
 #!/bin/bash
 set -e
 
-# Source ROS 2 and workspace setup
+# Source ROS 2 setup
 source /opt/ros/${ROS_DISTRO}/setup.bash
-source /azure_ws/install/setup.bash
 
-# Execute the passed command
+# Source the Kinect ROS 2 driver workspace (pre-installed)
+if [ -f "/azure_ws/install/setup.bash" ]; then
+    source /azure_ws/install/setup.bash
+fi
+
+# Execute the command passed to the container
 exec "$@"
