@@ -1,0 +1,29 @@
+{
+  "name": "azure-kinect-jetson-build",
+
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "args":
+    {
+      "ROS_DISTRO": "humble"
+    }
+  },
+
+  "containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}"
+  },
+
+  "mounts": [
+    "type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix,consistency=cached"
+  ],
+
+  "runArgs": [
+    "--network=host",
+    "--security-opt", // allow core dumps
+    "seccomp=unconfined", // allow core dumps
+    // Uncomment for containers requiring use of nvidia GPUs
+    // You will need to install NVIDIA Container Toolkit first
+    // "--runtime=nvidia",
+    // "--gpus=all",
+  ]
+}

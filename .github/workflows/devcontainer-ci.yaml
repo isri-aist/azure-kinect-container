@@ -38,3 +38,29 @@ jobs:
           subFolder: ${{ matrix.os }}
           push: always
           runCmd: echo "Image has been built"
+
+  package-devcontainers-jetson:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [jetson]
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Checkout (GitHub)
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2 
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build and run Dev Container task
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ghcr.io/isri-aist/azure-kinect-container
+          imageTag: ${{ matrix.os }}
+          subFolder: ${{ matrix.os }}
+          push: always
+          runCmd: echo "Image has been built"
