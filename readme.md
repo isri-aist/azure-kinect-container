@@ -67,3 +67,7 @@ docker compose up
 ### Running in the background
 
 If you detach your docker run you can use `-d` option either for `docker run` or `docker compose` command. 
+
+#### Useful links
+
+https://medium.com/@asandy520/how-to-use-python-to-run-kinect-azure-dk-on-ubuntu-22-04-7c323442c84b
