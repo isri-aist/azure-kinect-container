@@ -22,6 +22,10 @@ sudo udevadm trigger
 ```
 ## Docker setup
 
+If not done please login ghcr.io by following the given instructions : 
+
+https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+
 In order to pull images you need to run one of the following command :
 
 ```bash
@@ -36,6 +40,9 @@ This command install Azure Kinect SDK and ROS2 driver.
 Once the container is built and your camera is plugged in, run the following command to launch the container:
 
 ```bash
+export DISPLAY=:0
+xhost +
+
 docker run -it --rm  -e DISPLAY=$DISPLAY -e ROS_DOMAIN_ID=10 -v /tmp/.X11-unix:/tmp/.X11-unix --net=host --ipc=host --privileged --shm-size=2g ghcr.io/isri-aist/azure-kinect-container:humble
 #or (To be run in the current folder)
 docker compose up 
