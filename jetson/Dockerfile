@@ -6,6 +6,8 @@ ARG IMAGE_SOURCE_REPO
 ARG ROS_DISTRO
 ARG DEBIAN_FRONTEND=noninteractive
 
+ENV ROS_DISTRO=${ROS_DISTRO}
+
 LABEL org.opencontainers.image.source="https://github.com/${IMAGE_SOURCE_REPO}"
 LABEL org.opencontainers.image.description="Development environment for $IMAGE_SOURCE_REPO (ros $ROS_DISTRO)"
 
