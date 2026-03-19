@@ -1,15 +1,25 @@
 services:
   azure-kinect:
     image: ghcr.io/isri-aist/azure-kinect-container:humble
+    # image: ghcr.io/isri-aist/azure-kinect-container:jazzy
+    # image: ghcr.io/isri-aist/azure-kinect-container:jetson
     container_name: azure-kinect-container
 
     environment:
       DISPLAY: ${DISPLAY}
       ROS_DOMAIN_ID: 10
       # NVIDIA_DRIVER_CAPABILITIES: all 
+      
+      # OPTIONAL: Zenoh DDS can be configured by uncommenting the following lines
+      # RMW_IMPLEMENTATION: rmw_zenoh_cpp
+      # ZENOH_CONFIG: file:///etc/zenoh/config.json
 
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
+
+      # OPTIONAL: Mount Zenoh configuration file
+      # - ./zenoh/client.json:/etc/zenoh/config.json
+
       # OPTIONAL: Mount a user dir from the host to /launch_dir inside the container
       # Replace this path with the actual location of the your launch files directory
       # - /{path_to_dir}:/launch_dir

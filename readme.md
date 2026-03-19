@@ -75,6 +75,13 @@ docker compose up
 
 If you detach your docker run you can use `-d` option either for `docker run` or `docker compose` command. 
 
+
+### Running with Zenoh 
+
+If you want to run with Zenoh, you check the related part of the `docker-compile.yml` file. Depending on your Zenoh configuration, a Zenoh router must be launched on the master host. 
+
+You can set your Zenoh config in the zenoh folder. If you want to switch from one config to another you can edit mounted volumes. 
+
 #### Useful links
 
 https://medium.com/@asandy520/how-to-use-python-to-run-kinect-azure-dk-on-ubuntu-22-04-7c323442c84b

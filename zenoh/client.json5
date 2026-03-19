@@ -1,0 +1,24 @@
+{
+  mode: "peer",
+
+  connect: {
+    endpoints: [
+      "tcp/localhost:7447"
+    ]
+  },
+
+  transport: {
+    link: {
+      tx: {
+        queue: {
+          congestion_control: {
+            drop: {
+              // wait time in microseconds (1,000,000 µs = 1 second)
+              wait_before_drop: 1000000
+            }
+          }
+        }
+      }
+    }
+  }
+}
