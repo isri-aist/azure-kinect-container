@@ -12,7 +12,7 @@ services:
       
       # OPTIONAL: Zenoh DDS can be configured by uncommenting the following lines
       # RMW_IMPLEMENTATION: rmw_zenoh_cpp
-      # ZENOH_CONFIG: file:///etc/zenoh/config.json
+      # ZENOH_SESSION_CONFIG_URI: /etc/zenoh/config.json
 
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
