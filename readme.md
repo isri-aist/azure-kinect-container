@@ -41,7 +41,7 @@ Once the container is built and your camera is plugged in, run the following com
 
 ```bash
 export DISPLAY=:0
-xhost +
+xhost +local:docker
 
 docker run -it --rm  -e DISPLAY=$DISPLAY -e ROS_DOMAIN_ID=10 -v /tmp/.X11-unix:/tmp/.X11-unix --net=host --ipc=host --privileged --shm-size=2g ghcr.io/isri-aist/azure-kinect-container:humble
 #or (To be run in the current folder)
