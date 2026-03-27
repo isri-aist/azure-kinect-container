@@ -53,7 +53,7 @@ RUN apt-get update && \
 # Install ROS 2 packages 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y ros-${ROS_DISTRO}-ros-base python3-colcon-common-extensions ros-${ROS_DISTRO}-xacro ros-${ROS_DISTRO}-joint-state-publisher ros-${ROS_DISTRO}-rmw-zenoh-cpp ros-${ROS_DISTRO}-compressed-depth-image-transport ros-${ROS_DISTRO}-compressed-image-transport
+    apt-get install -y ros-${ROS_DISTRO}-ros-base python3-colcon-common-extensions ros-${ROS_DISTRO}-xacro ros-${ROS_DISTRO}-joint-state-publisher ros-${ROS_DISTRO}-rmw-cyclonedds-cpp ros-${ROS_DISTRO}-rmw-zenoh-cpp ros-${ROS_DISTRO}-compressed-depth-image-transport ros-${ROS_DISTRO}-compressed-image-transport
 
 # Add Microsoft package key and repository
 RUN curl -sSL -O https://packages.microsoft.com/keys/microsoft.asc && \

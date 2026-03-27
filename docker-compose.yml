@@ -8,6 +8,7 @@ services:
     environment:
       DISPLAY: ${DISPLAY}
       ROS_DOMAIN_ID: 10
+      RMW_IMPLEMENTATION: rmw_cyclonedds_cpp
       # NVIDIA_DRIVER_CAPABILITIES: all 
       
       # OPTIONAL: Zenoh DDS can be configured by uncommenting the following lines

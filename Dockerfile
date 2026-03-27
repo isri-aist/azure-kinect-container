@@ -44,7 +44,7 @@ ENV LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
 WORKDIR /azure_ws
 
 # Install ROS dependencies
-RUN apt-get install -y ros-${ROS_DISTRO}-xacro ros-${ROS_DISTRO}-joint-state-publisher ros-${ROS_DISTRO}-rmw-zenoh-cpp ros-${ROS_DISTRO}-compressed-depth-image-transport ros-${ROS_DISTRO}-compressed-image-transport
+RUN apt-get update && apt-get install -y ros-${ROS_DISTRO}-xacro ros-${ROS_DISTRO}-joint-state-publisher ros-${ROS_DISTRO}-rmw-cyclonedds-cpp ros-${ROS_DISTRO}-rmw-zenoh-cpp ros-${ROS_DISTRO}-compressed-depth-image-transport ros-${ROS_DISTRO}-compressed-image-transport
 
 # Clone the Azure Kinect ROS 2 Driver
 RUN mkdir -p src && \
